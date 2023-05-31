@@ -127,4 +127,4 @@ if botaoCalcular:
     st.write("Valor pernoite: R$ {:.2f}".format(valorPernoiteReceita))
     st.write("Seguro: R$ {:.2f}".format(seguro))
     st.write("Valor Total: R$ {:.2f}".format(valorTotalReceita))
-    st.write("Margem do cliente: {:.2f}%".format(margemCliente))
+    st.write("Margem do cliente: {:.2f} por cento".format(margemCliente))
