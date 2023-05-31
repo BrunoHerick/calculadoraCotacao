@@ -97,7 +97,7 @@ valorMargem = st.number_input(
     label="Digite o valor da margem: ",
     value=1.35,
     min_value=1.0,
-    step=0.5
+    step=0.05
 )
 
 botaoCalcular = st.button(
