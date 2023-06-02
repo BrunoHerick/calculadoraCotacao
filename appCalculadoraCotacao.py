@@ -28,21 +28,21 @@ listaVeiculos = [x for x in arquivo["VEICULO"].drop_duplicates()]
 listaCidadesDestino = [x for x in arquivo["CIDADE_DESTINO"].drop_duplicates()]
 
 st.write("Calculadora de cotação")
-
+auxiliar = arquivo
 veiculoSelecionado = st.selectbox(
     label="Selecione o veículo: ",
     options=listaVeiculos
 )
-arquivo = arquivo[
-    arquivo["VEICULO"] == veiculoSelecionado
-]
-
 cidadeSelecionada = st.selectbox(
     label="Selecione a cidade de destino: ",
     options=listaCidadesDestino
 )
-arquivo = arquivo[
-    arquivo["CIDADE_DESTINO"] == cidadeSelecionada
+
+auxiliar = auxiliar[
+    auxiliar["VEICULO"] == veiculoSelecionado
+]
+auxiliar = auxiliar[
+    auxiliar["CIDADE_DESTINO"] == cidadeSelecionada
 ]
 
 distanciaPercorrer = st.number_input(
@@ -120,11 +120,14 @@ if botaoCalcular:
     valorPernoiteReceita = (valorPernoite*valorMargem)/0.9075
     seguro = nfValor * 0.0008
     valorTotalReceita = valorFreteReceita + valorAjudanteReceita + valorPedagio + valorPernoiteReceita + seguro
-    margemCliente = (valorTotalReceita/nfValor)*100
     st.write("Valor do frete: R$ {:.2f}".format(valorFreteReceita))
     st.write("Valor do ajudante: R$ {:.2f}".format(valorAjudanteReceita))
     st.write("Valor do pedágio: R$ {:.2f}".format(valorPedagio))
     st.write("Valor pernoite: R$ {:.2f}".format(valorPernoiteReceita))
     st.write("Seguro: R$ {:.2f}".format(seguro))
-    st.write("Valor Total: R$ {:.2f}".format(valorTotalReceita))
+    st.write("Valor Total: R$ {:.2f}".format(valorTotalReceita))  
+    st.write("=====================================================")
+    margemPrincipal = (1 - (valorTotal/valorTotalReceita))*100
+    margemCliente = (valorTotalReceita/nfValor)*100
+    st.write("Margem: {:.2f} por cento".format(margemPrincipal))
     st.write("Margem do cliente: {:.2f} por cento".format(margemCliente))
