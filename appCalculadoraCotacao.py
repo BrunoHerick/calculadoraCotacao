@@ -63,19 +63,19 @@ pesoCarga = st.number_input(
 st.write("==================== OPCIONAIS ====================")
 valorAgregado = st.number_input(
     label="Digite o valor agregado (se não houver): ",
-    value=arquivo.iloc[0]["VALOR"]*1.0,
+    value=auxiliar.iloc[0]["VALOR"]*1.0,
     min_value=0.0,
     step=1.0
 )
 valorExcedente = st.number_input(
     label="Digite o valor do excedente (>100km): ",
-    value=arquivo.iloc[0]["EXCEDENTE_100_KM"]*1.0,
+    value=auxiliar.iloc[0]["EXCEDENTE_100_KM"]*1.0,
     min_value=0.0,
     step=1.0
 )
 valorAjudante = st.number_input(
     label="Digite o valor do ajudante: ",
-    value=arquivo.iloc[0]["AJUDANTE"]*1.0,
+    value=auxiliar.iloc[0]["AJUDANTE"]*1.0,
     min_value=0.0,
     step=1.0
 )
@@ -88,7 +88,7 @@ valorPedagio = st.number_input(
 )
 valorPernoite = st.number_input(
     label="Digite o pernoite: ",
-    value=arquivo.iloc[0]["PERNOITE"],
+    value=auxiliar.iloc[0]["PERNOITE"],
     min_value=0.0,
     step=1.0
 )
@@ -106,7 +106,7 @@ botaoCalcular = st.button(
 st.write("======================= CUSTO =======================")
 
 if botaoCalcular:
-    valorExcedente = arquivo.iloc[0]["EXCEDENTE_100_KM"]
+    valorExcedente = auxiliar.iloc[0]["EXCEDENTE_100_KM"]
     valorFrete = ((distanciaPercorrer-100.0)*valorExcedente)+valorAgregado
     valorTotal = valorFrete + valorAjudante + valorPernoite + valorPedagio
     st.write("Valor do frete: R$ {:.2f}".format(valorFrete))
